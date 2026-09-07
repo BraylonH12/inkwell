@@ -16,8 +16,7 @@ enum PostStatus {
 model Post {
  id String @id @default(uuid())
  authorId String
- author User @relation(fields: [authorId], referen
-ces: [id])
+ author User @relation(fields: [authorId], references: [id])
  title String
  body String
  status PostStatus @default(DRAFT)
