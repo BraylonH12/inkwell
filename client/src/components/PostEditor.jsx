@@ -84,14 +84,13 @@ export function PostEditor() {
        </p>
      )}
 
-     // client/src/components/PostEditor.jsx — button
-      <button
-          type="submit"
-          disabled={status === STATES.PUBLISHING}
-          className="w-full md:w-auto min-h-[44px] rounded bg-indigo600 px-4 py-2 text-white disabled:opacity-50"
-      >
-          {status === STATES.PUBLISHING ? "Publishing…" : "Publish"}
-      </button>
+     <button
+       type="submit"
+       disabled={status === STATES.PUBLISHING}
+       className="w-full min-h-[44px] rounded bg-indigo-600 px-4 py-2 text-white disabled:opacity-50 md:w-auto"
+     >
+       {status === STATES.PUBLISHING ? "Publishing…" : "Publish"}
+     </button>
    </form>
  );
 }

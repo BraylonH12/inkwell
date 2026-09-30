@@ -5,7 +5,10 @@
   "description": "Inkwell API server",
   "main": "index.js",
   "scripts": {
-    "dev": "node --watch --env-file=.env src/index.js"
+    "dev": "node --watch --env-file=.env src/index.js",
+    "prisma": "prisma",
+    "prisma:validate": "prisma validate",
+    "prisma:generate": "prisma generate"
   },
   "keywords": [],
   "author": "",

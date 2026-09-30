@@ -13,15 +13,35 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.status(200).json({
+    status: "ok",
+    service: "inkwell-api",
+    message: "Inkwell API is running. Use /api/health or /api/auth/* endpoints.",
+  });
+});
+
 app.use("/api", healthRoutes);
 app.use("/api", authRoutes);
 app.use("/api", postRoutes);
-app.use((err, req, res, next) => {
-    console.error(err);
-    res.status(err.status || 500).json({
-         error: { code: err.code || "INTERNAL_ERROR", message: err.message },
-    });
+
+app.use((req, res) => {
+  res.status(404).json({
+    error: {
+      code: "NOT_FOUND",
+      message: `Route ${req.method} ${req.originalUrl} was not found.`,
+    },
+  });
 });
+
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(err.status || 500).json({
+    error: { code: err.code || "INTERNAL_ERROR", message: err.message },
+  });
+});
+
 app.listen(PORT, () => {
- console.log(`Inkwell API listening on port ${PORT}`);
+  console.log(`Inkwell API listening on port ${PORT}`);
 });
