@@ -2,6 +2,9 @@
   "name": "inkwell-server",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "description": "Inkwell API server",
   "main": "index.js",
   "scripts": {
@@ -23,4 +26,5 @@
     "jsonwebtoken": "^9.0.3",
     "prisma": "^7.10.0"
   }
+  
 }
