@@ -7,7 +7,7 @@
 - Every merged change is self-reviewed (author) then peer-reviewed before merge
 - Review findings logged in docs/reviews/
 ## Testing (expanded in Lecture 12-14)
-- Unit tests: Services and Repositories (Jest) — starting Lecture 12
+- Unit tests: Services and Repositories (Jest) — ACTIVE as of Lecture 12
 - Integration tests: Routes (Supertest) — starting Lecture 13
 - End-to-end tests: critical user flows (Playwright) — starting Lecture 14
 ## Defect Tracking
@@ -19,6 +19,15 @@
 - Review turnaround (informal, tracked qualitatively at thisproject's scale)
 ## Ownership
 - For this course project: the student/team implementing Inkwell owns SQA plan adherence.
+## PostService.search() Test Cases (Lecture 9)
+
+| Test Case | Scenario | Input | Expected Result |
+|---|---|---|---|
+| PS-SEARCH-01 | Search with default pagination | `query: "inkwell"` | Matching posts and `hasMore` are returned; the repository receives page 1 and page size 10. |
+| PS-SEARCH-02 | Search with custom pagination | `query: "inkwell", page: 3, pageSize: 5` | The repository receives the query and requested pagination values. |
+| PS-SEARCH-03 | Search with no matches | `query: "no-match"`; repository returns no posts | The result contains an empty `posts` array and `hasMore: false`. |
+| PS-SEARCH-04 | Repository search fails | `query: "inkwell"`; repository rejects with an error | `PostService.search()` rejects with the same repository error. |
+
 ## Metrics Snapshot (as of 10/7/26)
 - Commits --> _22_
 - Logged Defects --> _1_
