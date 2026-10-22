@@ -1,7 +1,7 @@
 // server/src/services/post.service.js
 import { PostRepository } from "../repositories/post.repository.js";
 import { assertNonEmpty } from "../utils/validation.js";
-import { SubstringSearchStrategy } from "./search/substring-search.strategy.js";
+import { SubstringSearchStrategy } from "./substring-search.strategy.js";
 import { EventBus } from "../events/event-bus.js";
 const searchStrategy = SubstringSearchStrategy; // swap this line to change search behavior system-wide
 export const PostService = {
