@@ -1,21 +1,20 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Feed } from "./components/Feed";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { NavBar } from "./components/NavBar";
+import { Feed } from "./components/Feed";
 import { PostEditor } from "./components/PostEditor";
+import { LoginForm } from "./components/LoginForm";
 
 export default function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-gray-50">
-        <NavBar />
-
-        <main className="w-full px-4 py-6 md:mx-auto md:max-w-2xl md:px-6 md:py-8">
-          <Routes>
-            <Route path="/" element={<Feed />} />
-            <Route path="/write" element={<PostEditor />} />
-          </Routes>
-        </main>
-      </div>
+      <NavBar />
+      <main className="w-full px-4 py-6 md:max-w-2xl md:mx-auto md:px-6 md:py-8">
+        <Routes>
+          <Route path="/" element={<Feed />} />
+          <Route path="/write" element={<PostEditor />} />
+          <Route path="/login" element={<LoginForm />} />
+        </Routes>
+      </main>
     </BrowserRouter>
   );
 }
