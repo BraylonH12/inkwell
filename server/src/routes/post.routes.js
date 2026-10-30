@@ -3,6 +3,8 @@ import { PostService } from "../services/post.service.js";
 import { requireAuth } from "../middleware/auth.middleware.js";
 
 const router = Router();
+const DEFAULT_PAGE_SIZE = 10;
+const MAX_PAGE_SIZE = 100;
 
 router.post("/posts", requireAuth, async (req, res, next) => {
   try {
@@ -20,10 +22,21 @@ router.post("/posts", requireAuth, async (req, res, next) => {
 
 router.get("/posts", async (req, res, next) => {
   try {
-    const { page = 1, search } = req.query;
+    const { page = 1, pageSize = DEFAULT_PAGE_SIZE, search } = req.query;
+    const requestedPageSize = Number(pageSize);
+    const boundedPageSize = Number.isFinite(requestedPageSize)
+      ? Math.min(Math.max(1, Math.floor(requestedPageSize)), MAX_PAGE_SIZE)
+      : DEFAULT_PAGE_SIZE;
     const result = search
-      ? await PostService.search({ query: search, page: Number(page) })
-      : await PostService.listPublished({ page: Number(page) });
+      ? await PostService.search({
+          query: search,
+          page: Number(page),
+          pageSize: boundedPageSize,
+        })
+      : await PostService.listPublished({
+          page: Number(page),
+          pageSize: boundedPageSize,
+        });
 
     res.status(200).json(result);
   } catch (err) {

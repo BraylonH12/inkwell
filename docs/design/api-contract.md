@@ -10,8 +10,9 @@ Request: { email: string, password: string }
 Success: 200 { user: UserPublic, accessToken: string, refreshToken: string }
 Errors:
  401 INVALID_CREDENTIALS — "Invalid email or password."
-## GET /api/posts?page=n
+## GET /api/posts?page=n&pageSize=n
 Success: 200 { posts: PostPublic[], page: number, hasMore: boolean }
+`pageSize` defaults to 10 and is clamped to a maximum of 100.
 ## POST /api/posts/:id/comments
 Request: {body: string}
 Success: 201 { comment: CommentPublic }
