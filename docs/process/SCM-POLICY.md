@@ -9,8 +9,8 @@ Inkwell uses GitHub Flow:
 - Contributors delete branches after merging them.
 ## Commit Message Conventions
 Inkwell follows Conventional Commits:
-<type>(<scope>): <short summary>
+    <type>(<scope>): <short summary>
 Types: feat, fix, test, docs, refactor, chore, security
 Examples:
-feat(posts): add tag-based search
-security(auth): fix authorId spoofing vulnerability
+    feat(posts): add tag-based search
+    security(auth): fix authorId spoofing vulnerability
